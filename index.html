@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CyberTage — Kleber Vinicius | Desenvolvedor Cyberpunk</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Exo+2:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="scanline"></div>
+
+    <!-- Modal para visualização de imagens -->
+    <div id="imageModal" class="modal">
+      <span class="close-modal">&times;</span>
+      <div class="modal-counter" id="modalCounter">1 / 1</div>
+      <button class="modal-nav modal-prev" id="modalPrev">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="modal-nav modal-next" id="modalNext">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+      <div class="modal-content">
+        <img class="modal-image" id="modalImg" />
+        <div class="modal-caption" id="modalCaption"></div>
+      </div>
+    </div>
+
+    <header class="navbar">
+      <div class="logo">CyberTage</div>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#portfolio">Portfólio</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#feedback">Feedback</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </header>
+
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <img
+          id="heroPhoto"
+          src="c:\Users\Victor\Desktop\Imagens para portifófilo\copia ft perfil.jpeg"
+          alt="Kleber Vinicius"
+          class="hero-photo"
+        />
+        <h1>
+          Olá, eu sou
+          <span class="glitch" data-text="Kleber Vinicius"
+            >Kleber Vinicius</span
+          >
+        </h1>
+        <p class="role">
+          Desenvolvedor Full-Stack — JS • HTML • CSS • Python • Java
+        </p>
+        <p>
+          Construo produtos digitais, faço integração de dados e ensino o que
+          aprendo.
+        </p>
+        <div class="cta-row">
+          <a href="#galeria" class="btn primary">Ver Galeria</a>
+          <a href="#contato" class="btn outline">Contrate-me</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicos" class="services">
+      <h2>Serviços</h2>
+      <div class="portfolio-grid">
+        <div class="portfolio-item">
+          <h3>Desenvolvimento Web</h3>
+          <p>
+            Criação de sites e aplicações web responsivas e modernas com as mais
+            recentes tecnologias.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">React</span>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <h3>Backend & APIs</h3>
+          <p>
+            Desenvolvimento de sistemas robustos no backend com integração de
+            bancos de dados e APIs.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Java</span>
+            <span class="tech-tag">SQL</span>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <h3>Consultoria em TI</h3>
+          <p>
+            Análise e otimização de sistemas existentes, arquitetura de soluções
+            e mentoria técnica.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">Arquitetura</span>
+            <span class="tech-tag">Otimização</span>
+            <span class="tech-tag">DevOps</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+      <h2>Portfólio</h2>
+      <p>
+        Projetos selecionados que demonstram minha expertise técnica e criativa.
+      </p>
+      <div class="portfolio-grid">
+        <div class="portfolio-item">
+          <h3>Sistema de Gestão para Engenharia Civil</h3>
+          <p>
+            Plataforma completa para gestão empresarial com dashboard interativo
+            e relatórios em tempo real.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">MongoDB</span>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <h3>Site para hospedagem</h3>
+          <p>
+            Loja virtual com sistema de pagamento integrado, carrinho de compras
+            e painel administrativo.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">Vue.js</span>
+            <span class="tech-tag">PHP</span>
+            <span class="tech-tag">MySQL</span>
+          </div>
+        </div>
+        <div class="portfolio-item">
+          <h3>App Mobile</h3>
+          <p>
+            Aplicativo para dispositivos móveis com funcionalidades offline e
+            sincronização em nuvem.
+          </p>
+          <div class="tech-stack">
+            <span class="tech-tag">React Native</span>
+            <span class="tech-tag">Firebase</span>
+            <span class="tech-tag">Redux</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEÇÃO DE GALERIA HORIZONTAL ===== -->
+    <section id="galeria" class="portfolio">
+      <h2>Galeria de Projetos</h2>
+      <p>
+        Explore imagens detalhadas dos meus projetos através das galerias
+        horizontais.
+      </p>
+
+      <!-- Projeto 1 -->
+      <div class="horizontal-gallery-section">
+        <h3 class="project-title">Sistema de Gestão para Engenharia Civil</h3>
+        <p class="project-description">
+          Plataforma completa para o setor da Engenharia Civil com dashboard
+          interativo, relatórios em tempo real.
+        </p>
+
+        <div class="horizontal-gallery">
+          <div class="gallery-container" id="gallery1">
+            <div
+              class="horizontal-gallery-item"
+              onclick="openModal(this, 'gallery1')"
+            >
+              <img
+                src="c:\Users\Victor\Desktop\Imagens para portifófilo\image.webp"
+                alt="Dashboard do Sistema"
+              />
+              <div class="horizontal-gallery-overlay">
+                <h3>Dashboard Principal</h3>
+                <p>Visão geral com métricas e gráficos</p>
+              </div>
+            </div>
+            <div
+              class="horizontal-gallery-item"
+              onclick="openModal(this, 'gallery1')"
+            >
+              <img
+                src="c:\Users\Victor\Desktop\Imagens para portifófilo\image (1).webp"
+                alt="Relatórios Analíticos"
+              />
+              <div class="horizontal-gallery-overlay">
+                <h3>Calculadora de materiais</h3>
+                <p>Análise detalhada para calculo de obra.</p>
+              </div>
+            </div>
+            <div
+              class="horizontal-gallery-item"
+              onclick="openModal(this, 'gallery1')"
+            >
+              <img
+                src="c:\Users\Victor\Desktop\Imagens para portifófilo\image (2).webp"
+                alt="Gestão de Usuários"
+              />
+              <div class="horizontal-gallery-overlay">
+                <h3>Relatório da obra</h3>
+                <p>Controle para orçamento.</p>
+              </div>
+            </div>
+            <div
+              class="horizontal-gallery-item"
+              onclick="openModal(this, 'gallery1')"
+            >
+              <img
+                src="c:\Users\Victor\Desktop\Imagens para portifófilo\image (3).webp"
+                alt="Módulo Financeiro"
+              />
+              <div class="horizontal-gallery-overlay">
+                <h3>Módulo Financeiro</h3>
+                <p>Controle de receitas e despesas</p>
+              </div>
+            </div>
+            <div
+              class="horizontal-gallery-item"
+              onclick="openModal(this, 'gallery1')"
+            >
+              <img
+                src="c:\Users\Victor\Desktop\Imagens para portifófilo\image (4).webp"
+                alt="Integrações API"
+              />
+              <div class="horizontal-gallery-overlay">
+                <h3>Controle de custos</h3>
+                <p>Ajuda com a previsão de gastos para uma obra</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-controls">
+            <button class="gallery-btn prev-btn" data-gallery="gallery1">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="gallery-btn next-btn" data-gallery="gallery1">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projeto 2 -->
+      <div class="horizontal-gallery-section">
+        <h3 class="project-title">Site para hospedagem</h3>
+        <p class="project-description">
+          Com sistema de pagamento integrado, cardápio de quartos, painel
+          administrativo e gestão de pessoas em tempo real.
+        </p>
+
+        <div class="horizontal-gallery">
+          <div class="gallery-container" id="gallery2">
+            <div
+              class="horizontal-gallery-item"
+              onclick="openModal(this, 'gallery2')"
+            >
+              <img
+                src="c:\Users\Victor\Desktop\Imagens para portifófilo\Portifolio 1.webp"
+                alt="Página Inicial"
+              />
+              <div class="horizontal-gallery-overlay">
+                <h3>Página Inicial</h3>
+                <p>Design responsivo e moderno</p>
+              </div>
+            </div>
+            <div
+              class="horizontal-gallery-item"
+              onclick="openModal(this, 'gallery2')"
+            >
+              <img
+                src="c:\Users\Victor\Desktop\Imagens para portifófilo\Portifolio 2.webp"
+                alt="Catálogo de Produtos"
+              />
+              <div class="horizontal-gallery-overlay">
+                <h3>Apresentação de serviços</h3>
+                <p>Navegação intuitiva e filtros</p>
+              </div>
+            </div>
+            <div
+              class="horizontal-gallery-item"
+              onclick="openModal(this, 'gallery2')"
+            >
+              <img
+                src="c:\Users\Victor\Desktop\Imagens para portifófilo\Portifolio 3.webp"
+                alt="Página do Produto"
+              />
+              <div class="horizontal-gallery-overlay">
+                <h3>Cardápio de quartos</h3>
+                <p>Detalhes completos e galeria</p>
+              </div>
+            </div>
+            <div
+              class="horizontal-gallery-item"
+              onclick="openModal(this, 'gallery2')"
+            >
+              <img
+                src="c:\Users\Victor\Desktop\Imagens para portifófilo\portifolio 4.webp"
+                alt="Carrinho de Compras"
+              />
+              <div class="horizontal-gallery-overlay">
+                <h3>Serviços Exclusivos</h3>
+                <p>Detalhes completos.</p>
+              </div>
+            </div>
+            <div
+              class="horizontal-gallery-item"
+              onclick="openModal(this, 'gallery2')"
+            >
+              <img
+                src="c:\Users\Victor\Desktop\Imagens para portifófilo\portifolio 5.webp"
+                alt="Carrinho de Compras"
+              />
+
+              <div class="horizontal-gallery-overlay">
+                <h3>Campo para comentários e feedback</h3>
+                <p>Acompanhe feedback para uma seleção mais confiavel</p>
+              </div>
+            </div>
+            <div
+              class="horizontal-gallery-item"
+              onclick="openModal(this, 'gallery2')"
+            >
+              <img
+                src="c:\Users\Victor\Desktop\Imagens para portifófilo\portifolio 6.webp"
+                alt="Painel Administrativo"
+              />
+              <div class="horizontal-gallery-overlay">
+                <h3>Painel de contato</h3>
+                <p>Visão completa da hospedagem</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-controls">
+            <button class="gallery-btn prev-btn" data-gallery="gallery2">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="gallery-btn next-btn" data-gallery="gallery2">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="feedback" class="feedback-section">
+      <h2>Comentários & Feedbacks</h2>
+      <p>O que dizem sobre meu trabalho</p>
+
+      <div class="feedback-container">
+        <!-- Lista de Feedbacks Existentes -->
+        <div class="feedbacks-list" id="feedbacksList">
+          <!-- Feedbacks serão carregados aqui via JavaScript -->
+        </div>
+
+        <!-- Formulário de Feedback -->
+        <div class="feedback-form-container">
+          <h3>Deixe seu feedback</h3>
+          <form id="feedback-form" class="feedback-form">
+            <div class="form-group">
+              <input
+                type="text"
+                id="user-name"
+                name="name"
+                placeholder="Seu nome (opcional)"
+                class="form-input"
+              />
+            </div>
+
+            <div class="form-group">
+              <textarea
+                id="feedback-text"
+                name="feedback"
+                rows="4"
+                placeholder="Compartilhe sua experiência ou sugestão..."
+                class="form-textarea"
+                required
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <div class="rating-container">
+                <span class="rating-label">Avaliação:</span>
+                <div class="stars-rating">
+                  <input
+                    type="radio"
+                    id="star5"
+                    name="rating"
+                    value="5"
+                    checked
+                  />
+                  <label for="star5">★</label>
+                  <input type="radio" id="star4" name="rating" value="4" />
+                  <label for="star4">★</label>
+                  <input type="radio" id="star3" name="rating" value="3" />
+                  <label for="star3">★</label>
+                  <input type="radio" id="star2" name="rating" value="2" />
+                  <label for="star2">★</label>
+                  <input type="radio" id="star1" name="rating" value="1" />
+                  <label for="star1">★</label>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn primary submit-btn">
+              <i class="fas fa-paper-plane"></i>
+              Enviar Feedback
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="contact">
+      <h2>Contato</h2>
+      <p>Entre em contato comigo por:</p>
+      <div class="links">
+        <a href="https://www.instagram.com/cyber_tage/"
+          ><i class="fab fa-instagram"></i> Instagram</a
+        >
+        <a href="https://github.com/CyberTag20" target="_blank"
+          ><i class="fab fa-github"></i> GitHub</a
+        >
+        <a
+          href="https://www.linkedin.com/in/kleber-vinicius-79b2652b0/"
+          target="_blank"
+        >
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> CyberTage — Desenvolvido por Kleber Vinicius
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

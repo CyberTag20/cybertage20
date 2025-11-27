@@ -1,0 +1,13 @@
+{
+  "name": "cybertage-portfolio",
+  "version": "1.0.0",
+  "description": "Portfólio Cyberpunk - Kleber Vinicius",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "build": "echo 'No build process needed'"
+  },
+  "dependencies": {
+    "serve": "^14.0.0"
+  }
+}

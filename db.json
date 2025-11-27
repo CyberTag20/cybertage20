@@ -1,0 +1,18 @@
+{
+  "feedbacks": [
+    {
+      "id": 1,
+      "name": "Cliente Satisfeito",
+      "feedback": "Excelente trabalho! O sistema superou nossas expectativas.",
+      "rating": 5,
+      "timestamp": 1705276800000
+    },
+    {
+      "id": 2,
+      "name": "Parceiro de Projeto",
+      "feedback": "Profissional muito competente e dedicado. Recomendo!",
+      "rating": 5,
+      "timestamp": 1706745600000
+    }
+  ]
+}
