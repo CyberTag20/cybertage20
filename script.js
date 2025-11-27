@@ -177,6 +177,136 @@ class FeedbackSystem {
   }
 }
 
+// ===== FUNÇÕES PARA GERENCIAMENTO DE FEEDBACKS (CONSOLE) =====
+
+// Função para listar todos os feedbacks no console
+function listarFeedbacks() {
+  const feedbacks = JSON.parse(
+    localStorage.getItem("portfolio-feedbacks") || "[]"
+  );
+  console.log("📝 FEEDBACKS SALVOS:");
+  console.log("═".repeat(50));
+
+  if (feedbacks.length === 0) {
+    console.log("📭 Nenhum feedback encontrado!");
+    return [];
+  }
+
+  feedbacks.forEach((fb, index) => {
+    console.log(`🔸 ${index + 1}. ID: ${fb.id}`);
+    console.log(`   👤 Nome: ${fb.name || "Anônimo"}`);
+    console.log(
+      `   📅 Data: ${new Date(fb.timestamp).toLocaleString("pt-BR")}`
+    );
+    console.log(
+      `   ⭐ Avaliação: ${"★".repeat(fb.rating)}${"☆".repeat(5 - fb.rating)}`
+    );
+    console.log(`   💬 Feedback: "${fb.feedback}"`);
+    console.log(`   🗑️  Para excluir: excluirFeedback(${fb.id})`);
+    console.log("─".repeat(40));
+  });
+
+  console.log(`📊 Total: ${feedbacks.length} feedback(s)`);
+  return feedbacks;
+}
+
+// Função para excluir um feedback pelo ID
+function excluirFeedback(id) {
+  let feedbacks = JSON.parse(
+    localStorage.getItem("portfolio-feedbacks") || "[]"
+  );
+  const feedbackOriginal = feedbacks.find((fb) => fb.id === id);
+
+  if (!feedbackOriginal) {
+    console.log(
+      "❌ Feedback não encontrado! Use listarFeedbacks() para ver os IDs disponíveis."
+    );
+    return false;
+  }
+
+  console.log("🚨 CONFIRMAR EXCLUSÃO:");
+  console.log(`   ID: ${feedbackOriginal.id}`);
+  console.log(`   Nome: ${feedbackOriginal.name || "Anônimo"}`);
+  console.log(
+    `   Data: ${new Date(feedbackOriginal.timestamp).toLocaleString("pt-BR")}`
+  );
+  console.log(`   Feedback: "${feedbackOriginal.feedback}"`);
+
+  if (
+    confirm(
+      `Tem certeza que deseja excluir o feedback de "${
+        feedbackOriginal.name || "Anônimo"
+      }"?`
+    )
+  ) {
+    feedbacks = feedbacks.filter((fb) => fb.id !== id);
+    localStorage.setItem("portfolio-feedbacks", JSON.stringify(feedbacks));
+
+    console.log("✅ Feedback excluído com sucesso!");
+
+    // Atualizar a lista na tela
+    if (window.feedbackSystem) {
+      window.feedbackSystem.feedbacks = feedbacks;
+      window.feedbackSystem.renderFeedbacks();
+    }
+
+    return true;
+  } else {
+    console.log("❕ Exclusão cancelada.");
+    return false;
+  }
+}
+
+// Função para limpar TODOS os feedbacks
+function limparTodosFeedbacks() {
+  const feedbacks = JSON.parse(
+    localStorage.getItem("portfolio-feedbacks") || "[]"
+  );
+
+  if (feedbacks.length === 0) {
+    console.log("📭 Nenhum feedback para limpar!");
+    return;
+  }
+
+  console.log("🚨🚨🚨 ATENÇÃO: ISSO EXCLUIRÁ TODOS OS FEEDBACKS! 🚨🚨🚨");
+  console.log(`📊 Total de feedbacks que serão excluídos: ${feedbacks.length}`);
+
+  if (
+    confirm(
+      `🚨 TEM CERTEZA ABSOLUTA que deseja excluir TODOS os ${feedbacks.length} feedbacks? Esta ação NÃO pode ser desfeita!`
+    )
+  ) {
+    localStorage.removeItem("portfolio-feedbacks");
+    console.log("✅ Todos os feedbacks foram excluídos!");
+
+    if (window.feedbackSystem) {
+      window.feedbackSystem.feedbacks = [];
+      window.feedbackSystem.renderFeedbacks();
+    }
+  } else {
+    console.log("❕ Operação cancelada. Feedbacks preservados.");
+  }
+}
+
+// Função de ajuda para mostrar comandos disponíveis
+function ajudaFeedbacks() {
+  console.log("🛠️ COMANDOS DISPONÍVEIS PARA GERENCIAR FEEDBACKS:");
+  console.log("═".repeat(60));
+  console.log("📋 listarFeedbacks()");
+  console.log("   → Mostra todos os feedbacks com seus IDs");
+  console.log("");
+  console.log("🗑️  excluirFeedback(ID)");
+  console.log("   → Exclui um feedback específico pelo ID");
+  console.log("   → Exemplo: excluirFeedback(1705587600000)");
+  console.log("");
+  console.log("🧹 limparTodosFeedbacks()");
+  console.log("   → Remove TODOS os feedbacks (CUIDADO!)");
+  console.log("");
+  console.log("❓ ajudaFeedbacks()");
+  console.log("   → Mostra esta mensagem de ajuda");
+  console.log("═".repeat(60));
+}
+
 // ===== FUNCIONALIDADES DO MODAL DE IMAGENS =====
 const modal = document.getElementById("imageModal");
 const modalImg = document.getElementById("modalImg");
@@ -313,82 +443,10 @@ document.addEventListener("DOMContentLoaded", () => {
     "📝 Visitantes podem: Ver conteúdo, enviar feedbacks, navegar galerias"
   );
   console.log("💾 Feedbacks são salvos no localStorage do navegador");
+  console.log("");
+  console.log("🛠️ COMANDOS DE GERENCIAMENTO DISPONÍVEIS:");
+  console.log("   Digite 'ajudaFeedbacks()' no console para ver os comandos");
+  console.log(
+    "   Ou use: listarFeedbacks(), excluirFeedback(ID), limparTodosFeedbacks()"
+  );
 });
-// ===== FUNÇÕES PARA GERENCIAMENTO DE FEEDBACKS (CONSOLE) =====
-
-// Função para listar todos os feedbacks no console
-function listarFeedbacks() {
-  const feedbacks = JSON.parse(
-    localStorage.getItem("portfolio-feedbacks") || "[]"
-  );
-  console.log("📝 FEEDBACKS SALVOS:");
-  feedbacks.forEach((fb, index) => {
-    console.log(
-      `${index + 1}. ID: ${fb.id} | Nome: ${fb.name} | Data: ${new Date(
-        fb.timestamp
-      ).toLocaleString()}`
-    );
-    console.log(`   Feedback: ${fb.feedback}`);
-    console.log(
-      `   Avaliação: ${"★".repeat(fb.rating)}${"☆".repeat(5 - fb.rating)}`
-    );
-    console.log("---");
-  });
-  return feedbacks;
-}
-
-// Função para excluir um feedback pelo ID
-function excluirFeedback(id) {
-  let feedbacks = JSON.parse(
-    localStorage.getItem("portfolio-feedbacks") || "[]"
-  );
-  const feedbackOriginal = feedbacks.find((fb) => fb.id === id);
-
-  if (!feedbackOriginal) {
-    console.log("❌ Feedback não encontrado!");
-    return false;
-  }
-
-  feedbacks = feedbacks.filter((fb) => fb.id !== id);
-  localStorage.setItem("portfolio-feedbacks", JSON.stringify(feedbacks));
-
-  console.log("✅ Feedback excluído com sucesso!");
-  console.log("📋 Detalhes do feedback excluído:");
-  console.log(`   ID: ${feedbackOriginal.id}`);
-  console.log(`   Nome: ${feedbackOriginal.name}`);
-  console.log(`   Feedback: ${feedbackOriginal.feedback}`);
-
-  // Atualizar a lista na tela
-  if (window.feedbackSystem) {
-    window.feedbackSystem.feedbacks = feedbacks;
-    window.feedbackSystem.renderFeedbacks();
-  }
-
-  return true;
-}
-
-// Função para limpar TODOS os feedbacks
-function limparTodosFeedbacks() {
-  if (confirm("🚨 TEM CERTEZA que deseja excluir TODOS os feedbacks?")) {
-    localStorage.removeItem("portfolio-feedbacks");
-    console.log("✅ Todos os feedbacks foram excluídos!");
-
-    if (window.feedbackSystem) {
-      window.feedbackSystem.feedbacks = [];
-      window.feedbackSystem.renderFeedbacks();
-    }
-  }
-}
-
-// Função de ajuda para mostrar comandos disponíveis
-function ajudaFeedbacks() {
-  console.log("🛠️ COMANDOS DISPONÍVEIS:");
-  console.log("listarFeedbacks() - Mostra todos os feedbacks");
-  console.log("excluirFeedback(ID) - Exclui um feedback específico");
-  console.log("limparTodosFeedbacks() - Remove TODOS os feedbacks");
-  console.log("ajudaFeedbacks() - Mostra esta ajuda");
-}
-
-// Inicializar mensagem de ajuda
-console.log("🛠️ Sistema de gerenciamento de feedbacks carregado!");
-console.log("Digite 'ajudaFeedbacks()' para ver os comandos disponíveis");
